@@ -1,0 +1,28 @@
+----------- How to Change the 'modid' -----------
+
+1. Go into gradle.properties and change the properties 'maven_group' and 'archives_base_name' accordingly.
+These do not necessarily need to be synced.
+
+2. Run Gradle -> mod-folder-name -> Tasks -> build -> build (Configuration)
+
+2. Go into src/main/java/com/[mod id]/ExampleMod and change the 'MOD_ID' variable to your mod ID.
+
+3. Go to src/main/java/resources/fabric.mod.json and change the appearences of your old mod ID to your new mod ID.
+In this file, you are also going to change any appearences of 'archives_base_name' to the new one. Example:
+
+    "entrypoints": {
+        "main": [
+        			"com.example.ExampleMod" <------
+        		],
+        		"client": [
+        			"com.example.ExampleModClient" <-----
+        		]
+        	}
+    }
+
+(Every occurence for com._____ should be underlined red after building, because path would be outdated.)
+
+4. Rename every file in src/main and src/client that has your old modid in the name, because it is unlikely this
+will happen for you.
+
+5. Lastly, run the build configuration that we previously ran just to be safe.
